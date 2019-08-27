@@ -16,7 +16,7 @@ namespace AdventOfCode
             int frequency = 0;
             foreach (string change in args)
             {
-                CalculateFrequency(change, frequency);
+                frequency = CalculateFrequency(change, frequency);
             }
         }
 
@@ -26,7 +26,7 @@ namespace AdventOfCode
         /// </summary>
         /// <param name="change"></param>
         /// <param name="frequency"></param>
-        public static void CalculateFrequency(string change, int frequency)
+        public static int CalculateFrequency(string change, int frequency)
         {
             string sign = change.Substring(0, 1);
             string temp = change.Substring(1).Replace(",", "");
@@ -36,6 +36,8 @@ namespace AdventOfCode
                 frequency += sign == PLUS ? result : -result;
                 Console.WriteLine($"Current frequency {oldFrequency}, change of {sign}{temp}; resulting frequency {frequency},");
             }
+
+            return frequency;
         }
     }
 }
