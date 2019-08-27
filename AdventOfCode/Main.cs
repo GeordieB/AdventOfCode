@@ -9,6 +9,7 @@ namespace AdventOfCode
             FrequencyCalculator.Calculate(args);
             LoopedFrequencyFinder.Find(args);
             CheckSum.Calculate(args);
+            CommonCharacters.Find(args);
         }
     }
 }
