@@ -1,4 +1,6 @@
-﻿namespace AdventOfCode
+﻿using AdventOfCode.Day2;
+
+namespace AdventOfCode
 {
     public class Program
     {
@@ -6,6 +8,7 @@
         {
             FrequencyCalculator.Calculate(args);
             LoopedFrequencyFinder.Find(args);
+            CheckSum.Calculate(args);
         }
     }
 }
