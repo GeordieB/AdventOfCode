@@ -2,19 +2,19 @@
 
 namespace AdventOfCode
 {
-    public class Day1
+    public class FrequencyCalculator
     {
         /// <summary>
         /// Takes comma seperated list of frequency changes, such as +1, -2, +3, -1
         /// Calculates current frequency
         /// </summary>
         /// <param name="args"></param>
-        public static void CalculateFrequency(string[] args)
+        public static void Calculate(string[] args)
         {
             int frequency = 0;
             foreach (string change in args)
             {
-                frequency = CalculateFrequency(change, frequency);
+                frequency = Calculate(change, frequency);
             }
         }
 
@@ -24,7 +24,7 @@ namespace AdventOfCode
         /// </summary>
         /// <param name="change"></param>
         /// <param name="frequency"></param>
-        public static int CalculateFrequency(string change, int frequency)
+        public static int Calculate(string change, int frequency)
         {
             string sign = change.Substring(0, 1);
             string temp = change.Substring(1).Replace(",", "");

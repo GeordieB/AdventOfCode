@@ -3,14 +3,14 @@ using System.Collections.Generic;
 
 namespace AdventOfCode
 {
-    public class Day1Looped
+    public class LoopedFrequencyFinder
     {
         /// <summary>
         /// Takes comma seperated list of frequency changes, such as +1, -2, +3, -1
-        /// Calculates current frequency
+        /// Finds first frequency which appears more than once
         /// </summary>
         /// <param name="args"></param>
-        public static void CalculateFrequency(string[] args)
+        public static void Find(string[] args)
         {
             bool foundDoubleFrequency = false;
             int frequency = 0;
@@ -20,7 +20,7 @@ namespace AdventOfCode
             {
                 foreach (string change in args)
                 {
-                    frequency = Day1.CalculateFrequency(change, frequency);
+                    frequency = FrequencyCalculator.Calculate(change, frequency);
                     if (seenFrequencies.Contains(frequency))
                     {
                         foundDoubleFrequency = true;
