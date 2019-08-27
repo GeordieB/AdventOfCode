@@ -2,16 +2,14 @@
 
 namespace AdventOfCode
 {
-    class Day1
+    public class Day1
     {
-        public const string PLUS = "+";
-
         /// <summary>
         /// Takes comma seperated list of frequency changes, such as +1, -2, +3, -1
         /// Calculates current frequency
         /// </summary>
         /// <param name="args"></param>
-        static void Main(string[] args)
+        public static void CalculateFrequency(string[] args)
         {
             int frequency = 0;
             foreach (string change in args)
@@ -33,7 +31,7 @@ namespace AdventOfCode
             if (int.TryParse(temp, out int result))
             {
                 int oldFrequency = frequency;
-                frequency += sign == PLUS ? result : -result;
+                frequency += sign == Const.PLUS ? result : -result;
                 Console.WriteLine($"Current frequency {oldFrequency}, change of {sign}{temp}; resulting frequency {frequency},");
             }
 
