@@ -29,7 +29,12 @@ namespace AdventOfCode.Day3
             }
 
             Dictionary<(int, int), List<string>> grid = CreateGrid(claims);
-            Console.WriteLine($"There are {grid.Count(p => p.Value.Count() > 1)} square inches where claims overlap");
+
+            List<KeyValuePair<(int, int), List<string>>> overlap = grid.Where(p => p.Value.Count() > 1).ToList();
+            string intactClaimId = FindIntactClaim(overlap, claims);
+
+            Console.WriteLine($"There are {overlap.Count()} square inches where claims overlap");
+            Console.WriteLine($"Thee ID of the claim that doesn't overlap is: {intactClaimId}");
         }
 
         private static Dictionary<(int, int), List<string>> CreateGrid(List<Claim> claims)
@@ -56,6 +61,22 @@ namespace AdventOfCode.Day3
             }
 
             return grid;
+        }
+
+        public static string FindIntactClaim(List<KeyValuePair<(int, int), List<string>>> overlap, List<Claim> claims)
+        {
+            List<string> overlappingIds = overlap.SelectMany(p => p.Value).ToList();
+            string intactClaimId = "";
+            foreach (Claim claim in claims)
+            {
+                if (!overlappingIds.Any(p => p == claim.ID))
+                {
+                    intactClaimId = claim.ID;
+                    break;
+                }
+            }
+
+            return intactClaimId;
         }
     }
 }
