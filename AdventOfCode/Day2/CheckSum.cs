@@ -7,6 +7,11 @@ namespace AdventOfCode.Day2
 {
     public class CheckSum
     {
+        /// <summary>
+        /// Given a list of comma separated string IDs, find the checksum.
+        /// Ex: abcdef, bababc, abbcde
+        /// </summary>
+        /// <param name="boxIds"></param>
         public static void Calculate(string[] boxIds)
         {
             int appearsTwice = 0;

@@ -1,4 +1,5 @@
 ﻿using AdventOfCode.Day2;
+using AdventOfCode.Day3;
 
 namespace AdventOfCode
 {
@@ -10,6 +11,7 @@ namespace AdventOfCode
             LoopedFrequencyFinder.Find(args);
             CheckSum.Calculate(args);
             CommonCharacters.Find(args);
+            OverlapCalculator.Calculate(args);
         }
     }
 }

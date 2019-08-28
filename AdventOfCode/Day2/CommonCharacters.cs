@@ -5,6 +5,11 @@ namespace AdventOfCode.Day2
 {
     public class CommonCharacters
     {
+        /// <summary>
+        /// Given a list of comma separated string IDs, find the common letters where only one letter is different
+        /// Ex: abcde, fghij, fguij
+        /// </summary>
+        /// <param name="boxIds"></param>
         public static void Find(string[] boxIds)
         {
             string commonChars = "";
