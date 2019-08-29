@@ -21,27 +21,18 @@ namespace AdventOfCode.Day3
 
                 if (offset.Any() && offset.Count() == 2)
                 {
-                    LeftEdgeOffset = TryParse(offset[0]);
-                    TopEdgeOffset = TryParse(offset[1]);
+                    LeftEdgeOffset = offset[0].AsInt();
+                    TopEdgeOffset = offset[1].AsInt();
                 }
 
                 string[] dimension = rawClaim.ElementAt(2)?.Replace(",", "").Split('x');
 
                 if (dimension.Any() && dimension.Count() == 2)
                 {
-                    Width = TryParse(dimension[0]);
-                    Height = TryParse(dimension[1]);
+                    Width = dimension[0].AsInt();
+                    Height = dimension[1].AsInt();
                 }
             }
-        }
-
-        private int TryParse(string value)
-        {
-            if (int.TryParse(value, out int result))
-            {
-                return result;
-            }
-            return 0;
         }
     }
 }
