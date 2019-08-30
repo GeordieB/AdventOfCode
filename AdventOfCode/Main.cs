@@ -8,12 +8,13 @@ namespace AdventOfCode
     {
         static void Main(string[] args)
         {
-            FrequencyCalculator.Calculate(args);
-            LoopedFrequencyFinder.Find(args);
-            CheckSum.Calculate(args);
-            CommonCharacters.Find(args);
-            OverlapCalculator.Calculate(args);
-            ReposeRecord.FindAsleepGuard();
+            //FrequencyCalculator.Calculate(args);
+            //LoopedFrequencyFinder.Find(args);
+            //CheckSum.Calculate(args);
+            //CommonCharacters.Find(args);
+            //OverlapCalculator.Calculate(args);
+            //Strategy1.FindAsleepGuard();
+            //Strategy2.FindAsleepGuard();
         }
     }
 }

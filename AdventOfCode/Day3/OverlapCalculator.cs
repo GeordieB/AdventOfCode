@@ -34,7 +34,7 @@ namespace AdventOfCode.Day3
             string intactClaimId = FindIntactClaim(overlap, claims);
 
             Console.WriteLine($"There are {overlap.Count()} square inches where claims overlap");
-            Console.WriteLine($"Thee ID of the claim that doesn't overlap is: {intactClaimId}");
+            Console.WriteLine($"The ID of the claim that doesn't overlap is: {intactClaimId}");
         }
 
         private static Dictionary<(int, int), List<string>> CreateGrid(List<Claim> claims)

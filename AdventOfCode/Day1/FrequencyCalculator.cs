@@ -27,13 +27,11 @@ namespace AdventOfCode
         public static int Calculate(string change, int frequency)
         {
             string sign = change.Substring(0, 1);
-            string temp = change.Substring(1).Replace(",", "");
-            if (int.TryParse(temp, out int result))
-            {
-                int oldFrequency = frequency;
-                frequency += sign == Const.PLUS ? result : -result;
-                Console.WriteLine($"Current frequency {oldFrequency}, change of {sign}{temp}; resulting frequency {frequency},");
-            }
+            int result = change.Substring(1).Replace(",", "").AsInt();
+
+            int oldFrequency = frequency;
+            frequency += sign == Const.PLUS ? result : -result;
+            Console.WriteLine($"Current frequency {oldFrequency}, change of {sign}{result}; resulting frequency {frequency},");
 
             return frequency;
         }

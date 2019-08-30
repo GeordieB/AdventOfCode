@@ -6,9 +6,8 @@ namespace AdventOfCode.Day4
 {
     public class ReposeRecord
     {
-        public static void FindAsleepGuard()
+        public static List<Guard> Build()
         {
-            int guardMinute = 0;
             string[] rawRecords = FileUtils.ReadFile(Const.FILE_RECORDS);
 
             Dictionary<DateTime, string> orderedRawRecords = new Dictionary<DateTime, string>();
@@ -31,11 +30,7 @@ namespace AdventOfCode.Day4
                 guards.Add(new Guard(guardId, records.Where(p => p.GuardId == guardId).OrderBy(p => p.Timestamp).ToList()));
             }
 
-            Guard maxSleptGuard = LongestSleeper(guards);
-            int maxSleptMinute = MostSleptMinute(maxSleptGuard);
-
-            guardMinute = maxSleptGuard.Id.AsInt() * maxSleptMinute;
-            Console.WriteLine($"Guard #{maxSleptGuard.Id} slept the most on minute {maxSleptMinute}. Key is: {guardMinute}");
+            return guards;
         }
 
         public static Guard LongestSleeper(List<Guard> guards)
@@ -52,6 +47,43 @@ namespace AdventOfCode.Day4
             }
 
             return longestSleeper;
+        }
+
+        public static int MostSleptMinute(Guard guard)
+        {
+            int mostSleptMinute = 0;
+
+            int mostTimesSlept = 0;
+            foreach (KeyValuePair<int, int> timeSleptPerDay in BuildSleepDictionary(guard).OrderBy(p => p.Key))
+            {
+                if (timeSleptPerDay.Value >= mostTimesSlept)
+                {
+                    mostTimesSlept = timeSleptPerDay.Value;
+                    mostSleptMinute = timeSleptPerDay.Key;
+                }
+            }
+            return mostSleptMinute;
+        }
+
+        public static Guard FrequentSleeper(List<Guard> guards, out int minuteSlept)
+        {
+            int maxTimesSlept = 0;
+            minuteSlept = 0;
+            Guard frequentSleeper = null;
+            foreach (Guard guard in guards)
+            {
+                foreach (KeyValuePair<int, int> timesSlept in BuildSleepDictionary(guard))
+                {
+                    if (timesSlept.Value >= maxTimesSlept)
+                    {
+                        maxTimesSlept = timesSlept.Value;
+                        minuteSlept = timesSlept.Key;
+                        frequentSleeper = guard;
+                    }
+                }
+            }
+
+            return frequentSleeper;
         }
 
         public static Dictionary<int, int> BuildSleepDictionary(Guard guard)
@@ -78,22 +110,6 @@ namespace AdventOfCode.Day4
             }
 
             return slept;
-        }
-
-        public static int MostSleptMinute(Guard guard)
-        {
-            int mostSleptMinute = 0;
-
-            int mostTimesSlept = 0;
-            foreach (KeyValuePair<int, int> timeSleptPerDay in BuildSleepDictionary(guard).OrderBy(p => p.Key))
-            {
-                if (timeSleptPerDay.Value >= mostTimesSlept)
-                {
-                    mostTimesSlept = timeSleptPerDay.Value;
-                    mostSleptMinute = timeSleptPerDay.Key;
-                }
-            }
-            return mostSleptMinute;
         }
     }
 }
