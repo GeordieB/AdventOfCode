@@ -6,5 +6,6 @@
         public const string FILEPATH = "../../../../";
 
         public const string FILE_RECORDS = "Records.txt";
+        public const string FILE_POLYMER = "Polymer.txt";
     }
 }

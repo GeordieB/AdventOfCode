@@ -1,6 +1,7 @@
 ﻿using AdventOfCode.Day2;
 using AdventOfCode.Day3;
 using AdventOfCode.Day4;
+using AdventOfCode.Day5;
 
 namespace AdventOfCode
 {
@@ -8,13 +9,14 @@ namespace AdventOfCode
     {
         static void Main(string[] args)
         {
-            //FrequencyCalculator.Calculate(args);
-            //LoopedFrequencyFinder.Find(args);
-            //CheckSum.Calculate(args);
-            //CommonCharacters.Find(args);
-            //OverlapCalculator.Calculate(args);
-            //Strategy1.FindAsleepGuard();
-            //Strategy2.FindAsleepGuard();
+            FrequencyCalculator.Calculate(args);
+            LoopedFrequencyFinder.Find(args);
+            CheckSum.Calculate(args);
+            CommonCharacters.Find(args);
+            OverlapCalculator.Calculate(args);
+            Strategy1.FindAsleepGuard();
+            Strategy2.FindAsleepGuard();
+            AlchemicalReduction.Reduce();
         }
     }
 }
