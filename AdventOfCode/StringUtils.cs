@@ -14,5 +14,10 @@ namespace AdventOfCode
             }
             return 0;
         }
+
+        public static string ReplaceIgnoreCase(this string value, string oldValue, string newValue)
+        {
+            return value.Replace(oldValue.ToLower(), newValue).Replace(oldValue.ToUpper(), newValue);
+        }
     }
 }

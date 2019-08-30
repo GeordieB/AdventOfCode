@@ -17,6 +17,7 @@ namespace AdventOfCode
             Strategy1.FindAsleepGuard();
             Strategy2.FindAsleepGuard();
             AlchemicalReduction.Reduce();
+            ImproveReduction.Reduce();
         }
     }
 }
