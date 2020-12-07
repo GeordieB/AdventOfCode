@@ -14,5 +14,6 @@
         public const string FILE_SECURE_CONTAINER_PASSWORDS = "SecureContainerPasswords.txt";
         public const string FILE_REPORT_REPAIR = "ReportRepair.txt";
         public const string FILE_PASSWORD_PHILOSOPHY = "PasswordPhilosophy.txt";
+        public const string FILE_TOBOGGAN_TRAJECTORY = "TobogganTrajectory.txt";
     }
 }
