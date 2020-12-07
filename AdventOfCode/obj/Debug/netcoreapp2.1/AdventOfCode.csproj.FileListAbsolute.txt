@@ -4,8 +4,9 @@ C:\VC\AdventOfCode\AdventOfCode\bin\Debug\netcoreapp2.1\AdventOfCode.runtimeconf
 C:\VC\AdventOfCode\AdventOfCode\bin\Debug\netcoreapp2.1\AdventOfCode.dll
 C:\VC\AdventOfCode\AdventOfCode\bin\Debug\netcoreapp2.1\AdventOfCode.pdb
 C:\VC\AdventOfCode\AdventOfCode\obj\Debug\netcoreapp2.1\AdventOfCode.csprojAssemblyReference.cache
-C:\VC\AdventOfCode\AdventOfCode\obj\Debug\netcoreapp2.1\AdventOfCode.csproj.CoreCompileInputs.cache
 C:\VC\AdventOfCode\AdventOfCode\obj\Debug\netcoreapp2.1\AdventOfCode.AssemblyInfoInputs.cache
 C:\VC\AdventOfCode\AdventOfCode\obj\Debug\netcoreapp2.1\AdventOfCode.AssemblyInfo.cs
 C:\VC\AdventOfCode\AdventOfCode\obj\Debug\netcoreapp2.1\AdventOfCode.dll
 C:\VC\AdventOfCode\AdventOfCode\obj\Debug\netcoreapp2.1\AdventOfCode.pdb
+C:\VC\AdventOfCode\AdventOfCode\obj\Debug\netcoreapp2.1\AdventOfCode.csproj.CoreCompileInputs.cache
+C:\VC\AdventOfCode\AdventOfCode\obj\Debug\netcoreapp2.1\AdventOfCode.genruntimeconfig.cache
