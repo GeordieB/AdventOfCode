@@ -5,6 +5,8 @@ using AdventOfCode._2019.Day4;
 using AdventOfCode._2020.Day1;
 using AdventOfCode._2020.Day2;
 using AdventOfCode._2020.Day3;
+using AdventOfCode._2020.Day4;
+using AdventOfCode._2020.Day5;
 using AdventOfCode.Day2;
 using AdventOfCode.Day3;
 using AdventOfCode.Day4;
@@ -37,7 +39,10 @@ namespace AdventOfCode
             //PasswordPhilosophy.FindSledValidPasswords();
             //PasswordPhilosophy.FindTobogganValidPasswords();
             //TobogganTrajectory.FindTrees_Part1();
-            TobogganTrajectory.FindTrees_Part2();
+            //TobogganTrajectory.FindTrees_Part2();
+            //PassportProcessing.FindValidPassports();
+            //BinaryBoarding.DecodeBoardingPass();
+            BinaryBoarding.FindBoardingPass();
         }
     }
 }

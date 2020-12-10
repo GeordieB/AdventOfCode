@@ -15,5 +15,7 @@
         public const string FILE_REPORT_REPAIR = "ReportRepair.txt";
         public const string FILE_PASSWORD_PHILOSOPHY = "PasswordPhilosophy.txt";
         public const string FILE_TOBOGGAN_TRAJECTORY = "TobogganTrajectory.txt";
+        public const string FILE_PASSPORT_PROCESSING = "PassportProcessing.txt";
+        public const string FILE_BINARY_BOARDING = "BinaryBoarding.txt";
     }
 }
