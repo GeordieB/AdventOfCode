@@ -17,5 +17,6 @@
         public const string FILE_TOBOGGAN_TRAJECTORY = "TobogganTrajectory.txt";
         public const string FILE_PASSPORT_PROCESSING = "PassportProcessing.txt";
         public const string FILE_BINARY_BOARDING = "BinaryBoarding.txt";
+        public const string FILE_SONAR_SWEEP = "SonarSweep.txt";
     }
 }
