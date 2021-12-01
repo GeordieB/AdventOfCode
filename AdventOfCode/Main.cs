@@ -42,7 +42,9 @@ namespace AdventOfCode
             //TobogganTrajectory.FindTrees_Part2();
             //PassportProcessing.FindValidPassports();
             //BinaryBoarding.DecodeBoardingPass();
-            BinaryBoarding.FindBoardingPass();
+            //BinaryBoarding.FindBoardingPass();
+            //Search.ExistsUsingWhile(Search.InitArray(5000000), 20);
+            //Search.ExistsUsingRecursion(Search.InitArray(50000), 1156);
         }
     }
 }
