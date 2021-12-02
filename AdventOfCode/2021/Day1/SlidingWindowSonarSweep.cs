@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace AdventOfCode._2021.Day1
 {
@@ -85,7 +84,7 @@ namespace AdventOfCode._2021.Day1
                 else if (i == 1)
                     formattedData.Add($"{rawData[i]} 1 2");
                 else
-                    formattedData.Add($"{rawData[i]} {i - 1} {i} {i +1}");
+                    formattedData.Add($"{rawData[i]} {i - 1} {i} {i + 1}");
             }
 
             return formattedData;

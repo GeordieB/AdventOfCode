@@ -8,6 +8,7 @@ using AdventOfCode._2020.Day3;
 using AdventOfCode._2020.Day4;
 using AdventOfCode._2020.Day5;
 using AdventOfCode._2021.Day1;
+using AdventOfCode._2021.Day2;
 using AdventOfCode.Day2;
 using AdventOfCode.Day3;
 using AdventOfCode.Day4;
@@ -47,7 +48,8 @@ namespace AdventOfCode
             //Search.ExistsUsingWhile(Search.InitArray(5000000), 20);
             //Search.ExistsUsingRecursion(Search.InitArray(50000), 1156);
             //SonarSweep.AnalyseSweep();
-            SlidingWindowSonarSweep.AnalyseSweep();
+            //SlidingWindowSonarSweep.AnalyseSweep();
+            Dive.CalculatePosition();
         }
     }
 }
