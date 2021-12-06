@@ -20,5 +20,6 @@
         public const string FILE_SONAR_SWEEP = "SonarSweep.txt";
         public const string FILE_DIVE = "Dive.txt";
         public const string FILE_BINARY_DIAGNOSTIC = "BinaryDiagnostic.txt";
+        public const string FILE_GIANT_SQUID = "GiantSquid.txt";
     }
 }
