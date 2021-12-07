@@ -12,6 +12,7 @@ using AdventOfCode._2021.Day2;
 using AdventOfCode._2021.Day3;
 using AdventOfCode._2021.Day4;
 using AdventOfCode._2021.Day5;
+using AdventOfCode._2021.Day6;
 using AdventOfCode.Day2;
 using AdventOfCode.Day3;
 using AdventOfCode.Day4;
@@ -55,8 +56,10 @@ namespace AdventOfCode
             //Dive.CalculatePosition();
             //BinaryDiagnostic.CalculatePowerConsumption();
             //GiantSquid.PlayBingo();
-            HydrothermalVenture.FindOverlapingLines();
-            HydrothermalVenture.FindOverlapingLinesWithDiagonals();
+            //HydrothermalVenture.FindOverlapingLines();
+            //HydrothermalVenture.FindOverlapingLinesWithDiagonals();
+            //Lanternfish.SimulateGrowthBruteForce();
+            LanternFish.SimulateSmart();
         }
     }
 }
