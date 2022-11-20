@@ -1,12 +1,9 @@
-﻿using System.IO;
+﻿namespace AdventOfCode;
 
-namespace AdventOfCode
+public class FileUtils
 {
-    public class FileUtils
+    public static string[] ReadFile(string fileName)
     {
-        public static string[] ReadFile(string fileName)
-        {
-            return File.ReadAllLines($"{Const.FILEPATH}{fileName}");
-        }
+        return File.ReadAllLines($"{Const.FILEPATH}{fileName}");
     }
 }
