@@ -25,4 +25,7 @@ public class Const
     public const string FILE_LANTERNFISH = "Lanternfish.txt";
     public const string FILE_WHALES = "Whales.txt";
     public const string FILE_CHUNKS = "Chunks.txt";
+    public const string FILE_CARLORIE_COUNTING = "CalorieCounting.txt";
+    public const string FILE_ROCK_PAPER_SCISSORS = "RockPaperScissors.txt";
+    public const string FILE_RUCKSACKREORGANIZATION = "RucksackReorganization.txt";
 }
