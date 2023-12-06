@@ -35,4 +35,5 @@ public class Const
     public const string FILE_TREBUCHET = "Trebuchet.txt";
     public const string FILE_CUBECONUNDRUM = "CubeConundrum.txt";
     public const string FILE_GEARRATIOS = "GearRatios.txt";
+    public const string FILE_SCRATCHCARDS = "ScratchCards.txt";
 }
