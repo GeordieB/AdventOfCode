@@ -49,7 +49,7 @@ public class GearRatios
                 var character = raw[i][j];
                 if (!char.IsDigit(character))
                 {
-                    AddValidGear(gears, i, numbers, starLocation.Item1, starLocation.Item2, isValidGear);
+                    AddValidGear(gears, numbers, starLocation.Item1, starLocation.Item2, isValidGear);
                     numbers.Clear();
                     isValidGear = false;
                     starLocation = (0, 0);
@@ -62,7 +62,7 @@ public class GearRatios
                 isValidGear = isValidGear || starLocation != (0, 0);
 
                 if (IsLastColumn(raw, i, j))
-                    AddValidGear(gears, i, numbers, starLocation.Item1, starLocation.Item2, isValidGear);
+                    AddValidGear(gears, numbers, starLocation.Item1, starLocation.Item2, isValidGear);
             }
         }
         gears = gears.Where(p => p.Value.Count > 1).ToDictionary();
@@ -88,12 +88,11 @@ public class GearRatios
         }
     }
 
-    private static void AddValidGear(Dictionary<(int row, int column), List<long>> gears, int i, List<char> numbers, int row, int column, bool isValidGear)
+    private static void AddValidGear(Dictionary<(int row, int column), List<long>> gears, List<char> numbers, int row, int column, bool isValidGear)
     {
         if (isValidGear)
         {
             var partNumber = long.Parse(string.Join("", numbers));
-            //Console.WriteLine($"The following part number on line {i + 1} is valid: {partNumber}");
             if (!gears.TryAdd((row, column), new List<long> { partNumber }))
                 gears[(row, column)].Add(partNumber);
         }

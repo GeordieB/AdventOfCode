@@ -3,7 +3,7 @@
 public class Const
 {
     public const string PLUS = "+";
-    public const string FILEPATH = "../../../../";
+    public const string FILEPATH = "../../../../Inputs/";
 
     public const string FILE_RECORDS = "Records.txt";
     public const string FILE_POLYMER = "Polymer.txt";
