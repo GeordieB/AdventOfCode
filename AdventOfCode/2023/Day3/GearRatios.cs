@@ -34,6 +34,50 @@ public class GearRatios
         Console.WriteLine($"The sum of all valid parts is: {partNumbers.Sum()}");
     }
 
+    public static void GearRatioSum()
+    {
+        var raw = ReadFile();
+
+        var gears = new Dictionary<(int row, int column), List<long>>();
+        for (int i = 0; i < raw.Count; i++)
+        {
+            var numbers = new List<char>();
+            var starLocation = (0, 0);
+            var isValidGear = false;
+            for (int j = 0; j < raw[i].Length; j++)
+            {
+                var character = raw[i][j];
+                if (!char.IsDigit(character))
+                {
+                    AddValidGear(gears, i, numbers, starLocation.Item1, starLocation.Item2, isValidGear);
+                    numbers.Clear();
+                    isValidGear = false;
+                    starLocation = (0, 0);
+                    continue;
+                }
+
+                numbers.Add(character);
+                if (!isValidGear)
+                    starLocation = GetStarLocation(raw, i, j);
+                isValidGear = isValidGear || starLocation != (0, 0);
+
+                if (IsLastColumn(raw, i, j))
+                    AddValidGear(gears, i, numbers, starLocation.Item1, starLocation.Item2, isValidGear);
+            }
+        }
+        gears = gears.Where(p => p.Value.Count > 1).ToDictionary();
+
+        long sum = 0;
+        foreach (var parts in gears)
+        {
+            Console.WriteLine($"Gear ratio found for star {parts.Key} for parts {parts.Value.First()} and {parts.Value.Last()}");
+            var ratio = parts.Value.First() * parts.Value.Last();
+            sum += ratio;
+        }
+
+        Console.WriteLine($"The sum of all valid gear ratios is: {sum}");
+    }
+
     private static void AddValidPartNumber(List<long> partNumbers, int i, List<char> numbers, bool isValidPart)
     {
         if (isValidPart)
@@ -44,7 +88,18 @@ public class GearRatios
         }
     }
 
-    private static bool IsValidPart(List<string> raw, int i, bool isValidPart, int j)
+    private static void AddValidGear(Dictionary<(int row, int column), List<long>> gears, int i, List<char> numbers, int row, int column, bool isValidGear)
+    {
+        if (isValidGear)
+        {
+            var partNumber = long.Parse(string.Join("", numbers));
+            //Console.WriteLine($"The following part number on line {i + 1} is valid: {partNumber}");
+            if (!gears.TryAdd((row, column), new List<long> { partNumber }))
+                gears[(row, column)].Add(partNumber);
+        }
+    }
+
+    private static bool IsValidPart(List<string> raw, int row, bool isValidPart, int column)
     {
         var isLeftSymbol = false;
         var isDiagTopLeftSymbol = false;
@@ -55,29 +110,29 @@ public class GearRatios
         var isBottomSymbol = false;
         var isDiagBottomLeftSymbol = false;
 
-        if (j != 0)
-            isLeftSymbol = IsSymbol(raw[i][j - 1]);
-        if (i != 0)
+        if (column != 0)
+            isLeftSymbol = IsSymbol(raw[row][column - 1]);
+        if (row != 0)
         {
-            if (j != 0)
-                isDiagTopLeftSymbol = IsSymbol(raw[i - 1][j - 1]);
+            if (column != 0)
+                isDiagTopLeftSymbol = IsSymbol(raw[row - 1][column - 1]);
 
-            isTopSymbol = IsSymbol(raw[i - 1][j]);
+            isTopSymbol = IsSymbol(raw[row - 1][column]);
 
-            if (!IsLastColumn(raw, i, j))
-                isDiagTopRightSymbol = IsSymbol(raw[i - 1][j + 1]);
+            if (!IsLastColumn(raw, row, column))
+                isDiagTopRightSymbol = IsSymbol(raw[row - 1][column + 1]);
         }
-        if (!IsLastColumn(raw, i, j))
+        if (!IsLastColumn(raw, row, column))
         {
-            isRightSymbol = IsSymbol(raw[i][j + 1]);
-            if (i != raw.Count - 1)
-                isDiagBottomRightSymbol = IsSymbol(raw[i + 1][j + 1]);
+            isRightSymbol = IsSymbol(raw[row][column + 1]);
+            if (row != raw.Count - 1)
+                isDiagBottomRightSymbol = IsSymbol(raw[row + 1][column + 1]);
         }
-        if (!IsLastRow(raw, i))
+        if (!IsLastRow(raw, row))
         {
-            isBottomSymbol = IsSymbol(raw[i + 1][j]);
-            if (j != 0)
-                isDiagBottomLeftSymbol = IsSymbol(raw[i + 1][j - 1]);
+            isBottomSymbol = IsSymbol(raw[row + 1][column]);
+            if (column != 0)
+                isDiagBottomLeftSymbol = IsSymbol(raw[row + 1][column - 1]);
         }
 
         isValidPart = isValidPart || isLeftSymbol || isDiagTopLeftSymbol || isTopSymbol || isDiagTopRightSymbol ||
@@ -85,9 +140,50 @@ public class GearRatios
         return isValidPart;
     }
 
+    private static (int row, int column) GetStarLocation(List<string> raw, int row, int column)
+    {
+        if (column != 0 && IsStarSymbol(raw[row][column - 1]))
+            return (row, column - 1);
+
+        if (row != 0)
+        {
+            if (column != 0 && IsStarSymbol(raw[row - 1][column - 1]))
+                return (row - 1, column - 1);
+
+            if (IsStarSymbol(raw[row - 1][column]))
+                return (row - 1, column);
+
+            if (!IsLastColumn(raw, row, column) && IsStarSymbol(raw[row - 1][column + 1]))
+                return (row - 1, column + 1);
+        }
+        if (!IsLastColumn(raw, row, column))
+        {
+            if (IsStarSymbol(raw[row][column + 1]))
+                return (row, column + 1);
+
+            if (row != raw.Count - 1 && IsStarSymbol(raw[row + 1][column + 1]))
+                return (row + 1, column + 1);
+        }
+        if (!IsLastRow(raw, row))
+        {
+            if (IsStarSymbol(raw[row + 1][column]))
+                return (row + 1, column);
+
+            if (column != 0 && IsStarSymbol(raw[row + 1][column - 1]))
+                return (row + 1, column - 1);
+        }
+
+        return (0, 0);
+    }
+
     private static bool IsSymbol(char character)
     {
         return _symbols.Contains(character);
+    }
+
+    private static bool IsStarSymbol(char character)
+    {
+        return character == '*';
     }
 
     private static bool IsLastColumn(List<string> raw, int i, int j)
