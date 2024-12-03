@@ -17,12 +17,14 @@ public class CalorieCounting
                 index++;
                 continue;
             }
+
             caloriePerElf[index] += calories.AsInt();
         }
 
         var maxCalories = caloriePerElf.Max();
         Console.WriteLine($"The elf with the max calories is carrying {maxCalories} calories");
     }
+
     public static void FindTopThreeCalorieElves()
     {
         var rawData = ReadFile();
@@ -36,6 +38,7 @@ public class CalorieCounting
                 index++;
                 continue;
             }
+
             caloriePerElf[index] += calories.AsInt();
         }
 
@@ -50,6 +53,6 @@ public class CalorieCounting
 
     private static List<string> ReadFile()
     {
-        return FileUtils.ReadFile(Const.FILE_CARLORIE_COUNTING).ToList();
+        return FileUtils.ReadFile(Const.FILE_CALORIE_COUNTING).ToList();
     }
 }

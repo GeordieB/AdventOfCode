@@ -1,6 +1,6 @@
 ﻿namespace AdventOfCode;
 
-public class FileUtils
+public static class FileUtils
 {
     public static string[] ReadFile(string fileName)
     {

@@ -1,6 +1,6 @@
 ﻿namespace AdventOfCode;
 
-public class Const
+public static class Const
 {
     public const string PLUS = "+";
     public const string FILEPATH = "../../../../Inputs/";
@@ -25,7 +25,7 @@ public class Const
     public const string FILE_LANTERNFISH = "Lanternfish.txt";
     public const string FILE_WHALES = "Whales.txt";
     public const string FILE_CHUNKS = "Chunks.txt";
-    public const string FILE_CARLORIE_COUNTING = "CalorieCounting.txt";
+    public const string FILE_CALORIE_COUNTING = "CalorieCounting.txt";
     public const string FILE_ROCK_PAPER_SCISSORS = "RockPaperScissors.txt";
     public const string FILE_RUCKSACKREORGANIZATION = "RucksackReorganization.txt";
     public const string FILE_ASSIGNMENTPAIRS = "AssignmentPairs.txt";
@@ -36,4 +36,6 @@ public class Const
     public const string FILE_CUBECONUNDRUM = "CubeConundrum.txt";
     public const string FILE_GEARRATIOS = "GearRatios.txt";
     public const string FILE_SCRATCHCARDS = "ScratchCards.txt";
+    public const string FILE_HISTORICAL_LOCATIONS = "HistoricalLocations.txt";
+    public const string FILE_RED_NOSE_REPORTS = "RedNoseReports.txt";
 }

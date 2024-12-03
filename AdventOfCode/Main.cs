@@ -1,11 +1,11 @@
-﻿using AdventOfCode._2023.Day1;
+﻿using AdventOfCode._2024.Day2;
 
 namespace AdventOfCode;
 
 public class Program
 {
-    static void Main(string[] args)
+    private static void Main(string[] args)
     {
-        Trebuchet.CalibrateWithSpelledOutLetters();
+        RedNoseReports.FindSafeReports();
     }
 }
