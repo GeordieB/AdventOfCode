@@ -38,4 +38,5 @@ public static class Const
     public const string FILE_SCRATCHCARDS = "ScratchCards.txt";
     public const string FILE_HISTORICAL_LOCATIONS = "HistoricalLocations.txt";
     public const string FILE_RED_NOSE_REPORTS = "RedNoseReports.txt";
+    public const string FILE_CORRUPTED_MUL_INSTRUCTIONS = "CorruptedMulInstructions.txt";
 }
