@@ -14,7 +14,6 @@ public static class RedNoseReports
             LevelStatus levelStatus;
             var reportStatus = ReportStatus.Safe;
             var indexToIgnore = -1;
-            var errors = 0;
 
             for (var i = 0; i < levels.Count - 1; i++)
             {
@@ -27,53 +26,25 @@ public static class RedNoseReports
                     Console.WriteLine($"Unsafe Level: {string.Join(",", levels)} at index {index}");
                     break;
                 }
-                // if (indexToIgnore == levels.Count - 1)
-                // {
-                //     reportStatus = ReportStatus.Unsafe;
-                //     unsafeReports++;
-                //     Console.WriteLine($"Unsafe Level: {string.Join(",", levels)} at index {index}");
-                //     break;
-                // }
 
                 levelStatus = GetInitialLevelStatus(indexToIgnore, levels);
                 var currentLevelStatus = GetCurrentLevelStatus(indexToIgnore, i, levels);
                 if (currentLevelStatus != null && levelStatus != currentLevelStatus)
                 {
-                    // if (errors < 2)
-                    // {
                     indexToIgnore++;
                     i = -1;
-                    errors++;
                     continue;
-                    // }
-
-                    reportStatus = ReportStatus.Unsafe;
-                    unsafeReports++;
-                    Console.WriteLine($"Unsafe Level: {string.Join(",", levels)} at index {index}");
-                    break;
                 }
 
                 var difference = GetDifference(indexToIgnore, i, levels);
                 if (difference is null or >= 1 and <= 3) continue;
-                // if (errors < 2)
-                // {
                 indexToIgnore++;
                 i = -1;
-                errors++;
-                continue;
-                // }
-
-                reportStatus = ReportStatus.Unsafe;
-                unsafeReports++;
-                Console.WriteLine($"Unsafe Level: {string.Join(",", levels)} at index {index}");
-                break;
             }
 
-            if (reportStatus is ReportStatus.Safe)
-            {
-                Console.WriteLine($"Safe Level: {string.Join(",", levels)} at index {index}");
-                safeReports++;
-            }
+            if (reportStatus is not ReportStatus.Safe) continue;
+            Console.WriteLine($"Safe Level: {string.Join(",", levels)} at index {index}");
+            safeReports++;
         }
 
         Console.WriteLine($"There are {safeReports} safe reports");
