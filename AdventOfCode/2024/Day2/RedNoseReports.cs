@@ -1,6 +1,6 @@
 namespace AdventOfCode._2024.Day2;
 
-public class RedNoseReports
+public static class RedNoseReports
 {
     public static void FindSafeReports()
     {
@@ -20,25 +20,32 @@ public class RedNoseReports
             {
                 if (indexToIgnore == i)
                     continue;
-                if (indexToIgnore == levels.Count - 1)
+                if (indexToIgnore == levels.Count)
                 {
                     reportStatus = ReportStatus.Unsafe;
                     unsafeReports++;
                     Console.WriteLine($"Unsafe Level: {string.Join(",", levels)} at index {index}");
                     break;
                 }
+                // if (indexToIgnore == levels.Count - 1)
+                // {
+                //     reportStatus = ReportStatus.Unsafe;
+                //     unsafeReports++;
+                //     Console.WriteLine($"Unsafe Level: {string.Join(",", levels)} at index {index}");
+                //     break;
+                // }
 
                 levelStatus = GetInitialLevelStatus(indexToIgnore, levels);
                 var currentLevelStatus = GetCurrentLevelStatus(indexToIgnore, i, levels);
-                if (levelStatus != currentLevelStatus)
+                if (currentLevelStatus != null && levelStatus != currentLevelStatus)
                 {
-                    if (errors < 2)
-                    {
-                        indexToIgnore++;
-                        i = -1;
-                        errors++;
-                        continue;
-                    }
+                    // if (errors < 2)
+                    // {
+                    indexToIgnore++;
+                    i = -1;
+                    errors++;
+                    continue;
+                    // }
 
                     reportStatus = ReportStatus.Unsafe;
                     unsafeReports++;
@@ -47,14 +54,14 @@ public class RedNoseReports
                 }
 
                 var difference = GetDifference(indexToIgnore, i, levels);
-                if (difference is >= 1 and <= 3) continue;
-                if (errors < 2)
-                {
-                    indexToIgnore++;
-                    i = -1;
-                    errors++;
-                    continue;
-                }
+                if (difference is null or >= 1 and <= 3) continue;
+                // if (errors < 2)
+                // {
+                indexToIgnore++;
+                i = -1;
+                errors++;
+                continue;
+                // }
 
                 reportStatus = ReportStatus.Unsafe;
                 unsafeReports++;
@@ -83,17 +90,23 @@ public class RedNoseReports
             : LevelStatus.Decreasing;
     }
 
-    private static LevelStatus GetCurrentLevelStatus(int indexToIgnore, int currentIndex, List<int> levels)
+    private static LevelStatus? GetCurrentLevelStatus(int indexToIgnore, int currentIndex, List<int> levels)
     {
         var secondLevel = indexToIgnore == currentIndex + 1 ? currentIndex + 2 : currentIndex + 1;
+        secondLevel = secondLevel == levels.Count ? secondLevel - 1 : secondLevel;
+        if (secondLevel == indexToIgnore)
+            return null;
         return levels.ElementAt(currentIndex) < levels.ElementAt(secondLevel)
             ? LevelStatus.Increasing
             : LevelStatus.Decreasing;
     }
 
-    private static int GetDifference(int indexToIgnore, int currentIndex, List<int> levels)
+    private static int? GetDifference(int indexToIgnore, int currentIndex, List<int> levels)
     {
         var secondLevel = indexToIgnore == currentIndex + 1 ? currentIndex + 2 : currentIndex + 1;
+        secondLevel = secondLevel == levels.Count ? secondLevel - 1 : secondLevel;
+        if (secondLevel == indexToIgnore)
+            return null;
         return Math.Abs(levels.ElementAt(currentIndex) - levels.ElementAt(secondLevel));
     }
 }
